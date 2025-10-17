@@ -41,11 +41,11 @@ def load_colab_keys(keys = ["GOOGLE_API_KEY", "OPENAI_API_KEY"]):
 import os
 from typing import Callable
 
-def make_llm() -> Callable[[str], str]:
+def make_llm(keys = ["GOOGLE_API_KEY", "OPENAI_API_KEY"]) -> Callable[[str], str]:
     """Return a callable(prompt: str) -> str using Gemini, OpenAI, or stub.
     In Colab, automatically fetch keys from secrets if available.
     """
-    load_colab_keys()
+    load_colab_keys(keys)
 
 
     if os.getenv("GOOGLE_API_KEY"):
